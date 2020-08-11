@@ -4,15 +4,15 @@ public class LeftRotation {
     //input:
     // int[]
     // int d= # of rotations
-    public int rotateLeft(int[] numbers, int d){
+    public int[] rotateLeft(int[] a, int d){
 
-        int rotatedArr = numbers[0];
+    int n = a.length;
+    int[] rotatedArray= new int[n];
 
-       for( int i = 0; i < d; i++){
-           numbers[i] = numbers[i + 1];
-       }
-
-
+    for(int i = 0; i < a.length-1; i++){
+        a[i] = a[n - 1];
+    }
+        return a;
     }
 
 
