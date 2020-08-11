@@ -18,6 +18,12 @@ public class DynamicArray {
             seqList.add(new ArrayList<>());
 
         }
+
+
+        for(List<Integer> q : queries) {
+            int index = (q.get(1) ^ lastAnswer) % n;
+        }
+
         return lastAnswer;
     }
 }
