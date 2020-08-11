@@ -10,21 +10,27 @@ public class DynamicArray {
 
     private static List<List<Integer>> seqList;
 
-    public static List<Integer> dynamicArray(int n, List<List<Integer>> queries){
-
+    public static List<Integer> dynamicArray(int n, List<List<Integer>> queries) {
+        List<Integer> result = new ArrayList<>();
         int lastAnswer = 0;
 
-        for (int i = 0; i <= n; i++){
+        for (int i = 0; i <= n; i++) {
             seqList.add(new ArrayList<>());
 
         }
 
 
-        for(List<Integer> q : queries) {
-            int index = (q.get(1) ^ lastAnswer) % n;
-        }
+        for (List<Integer> q : queries) {
+            if (q.get(0) == 1) {
+                seqList.get((q.get(1) ^ lastAnswer) % n).add(q.get(2));
 
-        return lastAnswer;
+            } else {
+                List<Integer> seq = seqList.get((q.get(1) ^ lastAnswer) % n);
+                lastAnswer = seq.get(q.get(2) % seq.size());
+                result.add(lastAnswer);
+            }
+        }
+        return result;
     }
 }
 
