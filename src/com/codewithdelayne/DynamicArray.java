@@ -21,13 +21,19 @@ public class DynamicArray {
 
 
         for (List<Integer> q : queries) {
-            if (q.get(0) == 1) {
-                seqList.get((q.get(1) ^ lastAnswer) % n).add(q.get(2));
+            int index;
+            int size;
+            int queryType= q.get(0);
+            int x = q.get(1);
+            int y = q.get(2);
 
-            } else {
-                List<Integer> seq = seqList.get((q.get(1) ^ lastAnswer) % n);
-                lastAnswer = seq.get(q.get(2) % seq.size());
-                result.add(lastAnswer);
+            if (q.get(0) == 1) {
+               index = (x^lastAnswer)%n;
+               seqList.get(index).add(y);
+
+            }
+            if(queryType==2){
+                index = (x^lastAnswer)
             }
         }
         return result;
