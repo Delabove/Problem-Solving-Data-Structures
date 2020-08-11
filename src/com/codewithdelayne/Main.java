@@ -9,8 +9,8 @@ public class Main {
        List<List<Integer>> seqList = new ArrayList<>();
 
         /*Adding 3 to 0th row created above x(0, 0)*/
-        seqList.get(0).add(0, 0);
-        seqList.get(1).add(1, 1);
+//        seqList.get(0).add(0, 0);
+//        seqList.get(1).add(1, 1);
 
 
     }
