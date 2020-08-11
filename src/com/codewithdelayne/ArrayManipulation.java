@@ -3,22 +3,47 @@ package com.codewithdelayne;
 public class ArrayManipulation {
     static long arrayManipulation(int n, int[][] queries) {
 
+
+//        main list
+        int queriesList = queries.length; //number of operations
+//       rows of queries
+        int[] q = new int[n];
+        //each row
+
+
+//        range
         int a = 1;
-        int b = 5;
-        int k = 3;
-        int[] N = new int[n];
-        int index= n - 1;
-        int [] queriesArr = new int[queries.length];
-        int maxVal = 0;
+        int b = 1;
+        int k = 100;
+
+
+        //output
+        long maxVal = 0;
 
 
 
-
-       // FOR
+        // FOR
         //loop through n
-        for(int i = 0; i < N.length; i++)
+        for (int j = 1; j < q.length; j++) {
             //find a
-        //a+k
+           while(j >= a && a < b && b<= n){
+               maxVal = j+k;
+                j++;
+           }
+
+        }
+        return maxVal;
+    }
+
+    public static void main(String[] args) {
+//        arrayManipulation(10,1,5);
+    }
+
+}
+
+
+               // set value
+
         //insert new value from a - b
         //loop through n
         //find b
@@ -30,14 +55,10 @@ public class ArrayManipulation {
 
 
 
-        return maxVal;
-    }
-
-    public static void main(String[] args) {
 
 
 
-    }
+
 
 // Given: 1-indexed array(1234) of [0 0 0 0 0 0 ]
 // list of operations( int[][] queries )
@@ -94,4 +115,4 @@ public class ArrayManipulation {
 
 
 
-}
+
