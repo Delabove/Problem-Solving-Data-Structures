@@ -122,10 +122,21 @@ public class LinkedList {
    static boolean CompareLists(Node head1, Node head2) {
         boolean result = true;
 
-        Node current1 = headA;
-        Node current2 = headB;
+        Node current1 = head1;
+        Node current2 = head2;
 
-        return result;
+       while (current1 != null && current2 != null && current1.data == current2.data) {
+           current1 = current1.next;
+           current2 = current2.next;
+       }
+
+       if (current1 != null || current2 != null) {
+
+           result = false;
+       }
+
+
+       return result;
     }
 
 
@@ -158,6 +169,7 @@ public class LinkedList {
         System.out.println("");
         System.out.println("Reversed linked list ");
 
+//        CompareLists();
 
         PrintList(head);
 
