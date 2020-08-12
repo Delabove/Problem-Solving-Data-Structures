@@ -7,7 +7,8 @@ public class LinkedList {
 
     public static Node head;
 
-     static class Node{
+
+    static class Node{
 
         int data;
         public Node next;
@@ -118,7 +119,14 @@ public class LinkedList {
      return head;
     }
 
+   static boolean CompareLists(Node head1, Node head2) {
+        boolean result = true;
 
+        Node current1 = headA;
+        Node current2 = headB;
+
+        return result;
+    }
 
 
     //helper function to print given list
