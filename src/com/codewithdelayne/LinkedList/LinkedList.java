@@ -100,6 +100,24 @@ public class LinkedList {
         delete.next = delete.next.next;
 
     }
+    static Node reverse(Node head) {
+//    if(head == null){return null;}
+
+    Node prev = head;
+    Node curr = head;
+
+    while (curr != null){
+        Node next = curr;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+        head = prev;
+
+    return head;
+    }
+
+
 
 
     //helper function to print given list
@@ -130,7 +148,10 @@ public class LinkedList {
         deleteNode( 0);
         deleteNode( 1);
         deleteNode( 2);
+//        reverse(head);
+
         PrintList(head);
+
     }
 }
 
