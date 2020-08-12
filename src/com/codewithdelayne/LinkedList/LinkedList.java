@@ -101,20 +101,21 @@ public class LinkedList {
 
     }
     static Node reverse(Node head) {
-//    if(head == null){return null;}
 
-    Node prev = head;
+
+    Node prev = null;
     Node curr = head;
+    Node next = null;
 
     while (curr != null){
-        Node next = curr;
+        next = curr.next;
         curr.next = prev;
         prev = curr;
         curr = next;
     }
         head = prev;
 
-    return head;
+     return head;
     }
 
 
@@ -144,11 +145,11 @@ public class LinkedList {
         insertNodeAtPosition(4,2);
         insertNodeAtPosition(5,1);
         insertNodeAtPosition(6,5);
+//
+        head = reverse(head);
+        System.out.println("");
+        System.out.println("Reversed linked list ");
 
-        deleteNode( 0);
-        deleteNode( 1);
-        deleteNode( 2);
-//        reverse(head);
 
         PrintList(head);
 
