@@ -1,10 +1,11 @@
-package com.codewithdelayne;
+package com.codewithdelayne.LinkedList;
 
 
 public class LinkedList {
 
     static class SinglyLinkedListNode{
         int data;
+
         SinglyLinkedListNode next;
 
 
@@ -13,20 +14,31 @@ public class LinkedList {
     }
 
     static SinglyLinkedListNode insertNodeAtTail(SinglyLinkedListNode head, int data) {
-        SinglyLinkedListNode temp = head;
+        SinglyLinkedListNode first= head;
         SinglyLinkedListNode insertNode = new SinglyLinkedListNode(data);
+
 
         if(head == null) {
             return insertNode;
         }
 
-        while(temp.next != null) {
-            temp = temp.next;
+        while(first.next != null) {
+            first = first.next;
         }
-        temp.next  = insertNode;
+        first.next  = insertNode;
         insertNode.next = null;
 
         return head;
     }
 
+    static SinglyLinkedListNode insertNodeAtHead( SinglyLinkedListNode llist, int data) {
+
+        SinglyLinkedListNode last = llist;
+        SinglyLinkedListNode insertNode = new SinglyLinkedListNode(data);
+
+        last.next = insertNode;
+        insertNode.next = null;
+
+        return llist ;
+    }
 }

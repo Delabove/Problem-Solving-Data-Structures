@@ -1,4 +1,4 @@
-package com.codewithdelayne;
+package com.codewithdelayne.Arrays;
 
 import java.util.Arrays;
 import java.util.HashMap;

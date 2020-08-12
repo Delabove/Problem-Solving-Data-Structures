@@ -1,4 +1,4 @@
-package com.codewithdelayne;
+package com.codewithdelayne.Arrays;
 
 public class ArrayManipulation {
     static long arrayManipulation(int n, int[][] queries) {
