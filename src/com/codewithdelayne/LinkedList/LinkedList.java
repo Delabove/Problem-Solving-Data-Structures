@@ -78,6 +78,26 @@ public class LinkedList {
 
     }
 
+    static Node deleteNode(Node head, int position) {
+        //position of 0 = head, position of 1 is 1 away from head
+        // handle empty list
+        //at least 0 and less thant the length of list
+            int index = 0;
+            Node toBeDeleted = head;
+
+        for (int i = 0; head != null && i < position-1; i++) {
+            toBeDeleted= toBeDeleted.next;
+        }
+
+        if(toBeDeleted == null || toBeDeleted.next == null){
+            return;
+        }
+
+
+                 return head;
+        }
+
+
     //helper function to print given list
     static void PrintList(Node head) {
         Node ptr = head;
@@ -94,6 +114,7 @@ public class LinkedList {
         insertNodeAtHead(1);
         insertNodeAtTail(2);
         insertNodeAtHead(3);
+        deleteNode(head, 1);
 
 
         System.out.println("New list with insertions: ");
