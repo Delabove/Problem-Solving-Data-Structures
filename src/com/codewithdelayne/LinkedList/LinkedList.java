@@ -1,112 +1,109 @@
 package com.codewithdelayne.LinkedList;
 
 
+import org.w3c.dom.Node;
+
 public class LinkedList {
 
-   public static SinglyLinkedListNode head;
+    public static Node head;
 
-    static class SinglyLinkedListNode{
+     static class Node{
 
         int data;
-        public SinglyLinkedListNode next;
+        public Node next;
 
 
 
-        public SinglyLinkedListNode(int data) {
+        public Node(int data) {
 
             this.data= data;
 
         }
 
     }
-    //naive function to implement
-    public static SinglyLinkedListNode constructList()
-    {
-        SinglyLinkedListNode first = new SinglyLinkedListNode(1);
-        SinglyLinkedListNode last = new SinglyLinkedListNode(2);
 
-        head = first;
-        first.next= last;
+    public static Node insertNodeAtTail( int data) {
+         Node first = head;
 
-        return head;
-    }
-
-    public static SinglyLinkedListNode insertNodeAtTail( int data) {
-        SinglyLinkedListNode first = head;
         //1. Allocate node and data
-        SinglyLinkedListNode new_node = new SinglyLinkedListNode(data);
-        new_node.data = data;
+        Node tail = new Node(data);
+        tail.data = data;
 
 //        sets the next field of the new node to point to current first node
-        new_node.next = head;
+        tail.next = first;
 
         if(head == null) {
-            return new_node; //2. if head is null return new node at head
+            return tail; //2. if head is null return new node at head
         } else
 
         while(first.next != null) { //3. if node after first is not null, set first pointer to next node
-            first = first.next;
+           first = first.next;
         }
-        first.next  = new_node; //4. make next of first node new node
-        new_node.next = null;
+        first.next  = tail; //4. make next of first node new node
+        tail.next = null;
 
         return head;
     }
 
 
 
-//    static SinglyLinkedListNode insertNodeAtTail( SinglyLinkedListNode llist, int data) {
-//
-//        SinglyLinkedListNode last = llist;//hackerrank name -this is the tail
-//        SinglyLinkedListNode insertNode = new SinglyLinkedListNode(data);
-//
-//        last.next = insertNode;
-//        insertNode.next = null;
-//
-//        return llist ;
-//    }
-//    static SinglyLinkedListNode insertNodeAtPosition(SinglyLinkedListNode head, int data, int position) {
-//       SinglyLinkedListNode headnode = head;
-//       headnode.data = data;
-//       headnode.next = null;
-//
-//        if (position < 1)
-//            System.out.print("Invalid position");
-//
-//        // if position is 1 then new node is
-//        // set infornt of head node
-//        // head node is changing.
-//        if (position == 1) {
-//           SinglyLinkedListNode newNode = new SinglyLinkedListNode(data);
-//            newNode.next = head;
-//            head = newNode;
-//        } else {
-//            while (position-- != 0) {
-//                if (position == 1) {
-//                    // adding Node at required position
-//////                    SinglyLinkedListNode newNode = GetNode(data);
-////
-////                    // Making the new Node to point to
-////                    // the old Node at the same position
-////                    newNode.next = head.next;
-////
-////                    // Replacing current with new Node
-////                    // to the old Node to point to the new Node
-////                    head.next = newNode;
-////                    break;
-////                }
-////                head = head.next;
-////            }
-////            if (position != 1)
-////                System.out.print("Position out of range");
-////        }
-//        return head;
-//
-//    }
+    public static Node insertNodeAtHead(int data) {
+
+        Node fourthNode = new Node(data);
+        fourthNode.data = data;
+        fourthNode.next = head;
+
+        head=fourthNode;
+        return head;
+    }
+
+
+
+    public static Node insertNodeAtPosition(int data, int position) {
+        Node node = new Node(data);
+        node.data = data;
+        node.next = null;
+
+        if (head== null) {
+            //if head is null and position is zero then exit.
+            if (position != 0) {
+                return null;
+            } else { //node set to the head.
+                head = node;
+            }
+        }
+
+        if (head != null && position == 0) {
+            node.next = head;
+            head = node;
+            return head;
+        }
+
+        Node current = head;
+        Node previous = null;
+
+        int i = 0;
+
+        while (i < position) {
+            previous = current;
+            current = current.next;
+
+            if (current == null) {
+                break;
+            }
+
+            i++;
+        }
+
+        node.next = current;
+        previous.next= node;
+
+        return head;
+    }
 
     //helper function to print given list
-    static void PrintList(SinglyLinkedListNode head) {
-        SinglyLinkedListNode ptr = head;
+    static void PrintList(Node head) {
+        Node ptr = head;
         while (ptr != null) {
             System.out.print(ptr.data + " -> ");
             ptr = ptr.next;
@@ -114,9 +111,16 @@ public class LinkedList {
         System.out.println("null");
     }
     public static void main(String[] args) {
+        LinkedList llist = new LinkedList();
         System.out.println("Original list: ");
-        SinglyLinkedListNode head = constructList();
-        insertNodeAtTail(3);
+
+        insertNodeAtHead(1);
+        insertNodeAtTail(2);
+        insertNodeAtHead(3);
+
+
+        System.out.println("New list with insertions: ");
+        insertNodeAtPosition(4, 1);
 
         PrintList(head);
     }
