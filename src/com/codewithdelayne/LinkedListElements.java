@@ -6,23 +6,24 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 public class LinkedListElements {
-    Node head;
+
 
 
     private class SinglyLinkedListNode{
        private int data;
-       private Node next;
-
-        void Node(int d) { data = d; }
-
+       private SinglyLinkedListNode next;
 
     }
 
-    private Node first;
-    private Node last;
 
     static  void printLinkedList(SinglyLinkedListNode head) {
-        var node = new Node();
+       SinglyLinkedListNode temp = head;
+
+       while (temp != null){
+           System.out.println(temp.data);
+
+           temp = temp.next;
+       }
 
 
     }
