@@ -25,33 +25,34 @@ public class LinkedList {
         SinglyLinkedListNode first = new SinglyLinkedListNode(1);
         SinglyLinkedListNode last = new SinglyLinkedListNode(2);
 
-        SinglyLinkedListNode head = first;
+        head = first;
         first.next= last;
 
         return head;
     }
-//
-//    public static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode head, int data) {
-//        //4 step process
-//
-//        //1. Allocate node and data
-//
-//        SinglyLinkedListNode new_node = new SinglyLinkedListNode(data);
-//
-//
-//        if(head == null) {
-//            return new_node; //2. if head is null return new node at head
-//        }
-//
-//        while(first.next != null) { //3. if node after first is not null, set first pointer to next node
-//            first = first.next;
-//        }
-//        first.next  = new_node; //4. make next of first node new node
-//        new_node.next = null;
-//
-//        return head;
-//    }
-//
+
+    public static SinglyLinkedListNode insertNodeAtTail( int data) {
+        SinglyLinkedListNode first = head;
+        //1. Allocate node and data
+        SinglyLinkedListNode new_node = new SinglyLinkedListNode(data);
+        new_node.data = data;
+
+//        sets the next field of the new node to point to current first node
+        new_node.next = head;
+
+        if(head == null) {
+            return new_node; //2. if head is null return new node at head
+        } else
+
+        while(first.next != null) { //3. if node after first is not null, set first pointer to next node
+            first = first.next;
+        }
+        first.next  = new_node; //4. make next of first node new node
+        new_node.next = null;
+
+        return head;
+    }
+
 
 
 //    static SinglyLinkedListNode insertNodeAtTail( SinglyLinkedListNode llist, int data) {
@@ -115,6 +116,7 @@ public class LinkedList {
     public static void main(String[] args) {
         System.out.println("Original list: ");
         SinglyLinkedListNode head = constructList();
+        insertNodeAtTail(3);
 
         PrintList(head);
     }
