@@ -1,7 +1,7 @@
 package com.codewithdelayne.LinkedList;
 
 
-import org.w3c.dom.Node;
+//HACKERRANK SINGLYLINKEDLIST//
 
 public class LinkedList {
 
@@ -60,45 +60,22 @@ public class LinkedList {
 
 
     public static Node insertNodeAtPosition(int data, int position) {
-        Node node = new Node(data);
-        node.data = data;
-        node.next = null;
 
-        if (head== null) {
-            //if head is null and position is zero then exit.
-            if (position != 0) {
-                return null;
-            } else { //node set to the head.
-                head = node;
-            }
+       Node new_node = new Node(data);
+        Node current_node = head;
+
+        int index = 0;
+
+        while(index < position-1){
+            current_node = current_node.next;
+            index++;
         }
 
-        if (head != null && position == 0) {
-            node.next = head;
-            head = node;
-            return head;
-        }
-
-        Node current = head;
-        Node previous = null;
-
-        int i = 0;
-
-        while (i < position) {
-            previous = current;
-            current = current.next;
-
-            if (current == null) {
-                break;
-            }
-
-            i++;
-        }
-
-        node.next = current;
-        previous.next= node;
+        new_node.next = current_node.next;
+        current_node.next = new_node;
 
         return head;
+
     }
 
     //helper function to print given list
@@ -120,7 +97,7 @@ public class LinkedList {
 
 
         System.out.println("New list with insertions: ");
-        insertNodeAtPosition(4, 1);
+        insertNodeAtPosition(4, 3);
 
         PrintList(head);
     }
