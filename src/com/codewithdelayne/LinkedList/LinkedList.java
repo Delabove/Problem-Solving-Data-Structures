@@ -3,45 +3,60 @@ package com.codewithdelayne.LinkedList;
 
 public class LinkedList {
 
+    SinglyLinkedListNode head;
+
     static class SinglyLinkedListNode{
+
         int data;
-        int position;
         public SinglyLinkedListNode next;
 
 
 
-        public SinglyLinkedListNode(int data, int position) {
+        public SinglyLinkedListNode(int d) {
 
-            this.data= data;
-            this.position= position;
+            this.data= d;
+            next = null;
         }
 
     }
-    static SinglyLinkedListNode GetNode(int data) {
-        return new SinglyLinkedListNode(data);
-    }
-
-    public static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode head, int data) {
-        SinglyLinkedListNode first= head;
-        SinglyLinkedListNode insertNode = new SinglyLinkedListNode(data);
+    public static SinglyLinkedListNode constructList()
+    {
+        SinglyLinkedListNode first = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode second = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode last = new SinglyLinkedListNode(3);
 
 
-        if(head == null) {
-            return insertNode;
-        }
 
-        while(first.next != null) {
-            first = first.next;
-        }
-        first.next  = insertNode;
-        insertNode.next = null;
 
         return head;
     }
 
+    public static SinglyLinkedListNode insertNodeAtHead(SinglyLinkedListNode head, int data) {
+        //4 step process
+
+        //1. Allocate node and data
+        SinglyLinkedListNode first= head;
+        SinglyLinkedListNode new_node = new SinglyLinkedListNode(data);
+
+
+        if(head == null) {
+            return new_node; //2. if head is null return new node at head
+        }
+
+        while(first.next != null) { //3. if node after first is not null, set first pointer to next node
+            first = first.next;
+        }
+        first.next  = new_node; //4. make next of first node new node
+        new_node.next = null;
+
+        return head;
+    }
+
+
+
     static SinglyLinkedListNode insertNodeAtTail( SinglyLinkedListNode llist, int data) {
 
-        SinglyLinkedListNode last = llist;
+        SinglyLinkedListNode last = llist;//hackerrank name -this is the tail
         SinglyLinkedListNode insertNode = new SinglyLinkedListNode(data);
 
         last.next = insertNode;
@@ -87,36 +102,38 @@ public class LinkedList {
         return head;
 
     }
-    static void PrintList(SinglyLinkedListNode node) {
-        while (node != null) {
-            System.out.print(node.data);
-            node = node.next;
-            if (node != null)
+
+    //helper function to print given list
+    static void PrintList(SinglyLinkedListNode head) {
+        while (head != null) {
+            System.out.print(head.data);
+            head = head.next;
+            if (head != null)
                 System.out.print(",");
         }
         System.out.println();
     }
     public static void main(String[] args) {
-        SinglyLinkedListNode head = GetNode(16);
-        head.next = GetNode(3);
-        head.next.next = GetNode(7);
-        head.next.next.next = GetNode(1);
+        SinglyLinkedListNode head = GetNode(1);
+//        head.next = GetNode(3);
+//        head.next.next = GetNode(7);
+//        head.next.next.next = GetNode(1);
 
 
         System.out.print("Linked list before insertion: ");
         PrintList(head);
-
-        int data = 1; position = 2;
-        head = insertNodeAtPosition(head, data, position);
-        System.out.print("Linked list after" + " insertion of 1 at position 2: ");
-        PrintList(head);
-
-        // middle of the linked list
-        data = 1;
-        position = 4;
-        head = insertNodeAtPosition(head, data, position);
-        System.out.print("Linked list after" + "insertion of 1 at position 1: ");
-        PrintList(head);
+//
+//        int data = 1; position = 2;
+//        head = insertNodeAtPosition(head, data, position);
+//        System.out.print("Linked list after" + " insertion of 1 at position 2: ");
+//        PrintList(head);
+//
+//        // middle of the linked list
+//        data = 1;
+//        position = 4;
+//        head = insertNodeAtPosition(head, data, position);
+//        System.out.print("Linked list after" + "insertion of 1 at position 1: ");
+//        PrintList(head);
 
         // insertion at end of the linked list
       // list data = 15;
