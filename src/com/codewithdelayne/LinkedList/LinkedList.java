@@ -3,7 +3,7 @@ package com.codewithdelayne.LinkedList;
 
 public class LinkedList {
 
-    SinglyLinkedListNode head;
+   public static SinglyLinkedListNode head;
 
     static class SinglyLinkedListNode{
 
@@ -12,22 +12,21 @@ public class LinkedList {
 
 
 
-        public SinglyLinkedListNode(int d) {
+        public SinglyLinkedListNode(int data) {
 
-            this.data= d;
-            next = null;
+            this.data= data;
+
         }
 
     }
+    //naive function to implement
     public static SinglyLinkedListNode constructList()
     {
         SinglyLinkedListNode first = new SinglyLinkedListNode(1);
-        SinglyLinkedListNode second = new SinglyLinkedListNode(2);
-        SinglyLinkedListNode last = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode last = new SinglyLinkedListNode(2);
 
         SinglyLinkedListNode head = first;
-        first.next = second;
-        second.next = last;
+        first.next= last;
 
         return head;
     }
@@ -36,7 +35,7 @@ public class LinkedList {
 //        //4 step process
 //
 //        //1. Allocate node and data
-//        SinglyLinkedListNode first= head;
+//
 //        SinglyLinkedListNode new_node = new SinglyLinkedListNode(data);
 //
 //
@@ -53,8 +52,8 @@ public class LinkedList {
 //        return head;
 //    }
 //
-//
-//
+
+
 //    static SinglyLinkedListNode insertNodeAtTail( SinglyLinkedListNode llist, int data) {
 //
 //        SinglyLinkedListNode last = llist;//hackerrank name -this is the tail
@@ -106,15 +105,15 @@ public class LinkedList {
 
     //helper function to print given list
     static void PrintList(SinglyLinkedListNode head) {
-        while (head != null) {
-            System.out.print(head.data);
-            head = head.next;
-            if (head != null)
-                System.out.print(",");
+        SinglyLinkedListNode ptr = head;
+        while (ptr != null) {
+            System.out.print(ptr.data + " -> ");
+            ptr = ptr.next;
         }
-        System.out.println();
+        System.out.println("null");
     }
     public static void main(String[] args) {
+        System.out.println("Original list: ");
         SinglyLinkedListNode head = constructList();
 
         PrintList(head);
