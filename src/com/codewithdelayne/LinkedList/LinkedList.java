@@ -59,7 +59,7 @@ public class LinkedList {
 
 
 
-    public static Node insertNodeAtPosition(int data, int position) {
+    public static  Node insertNodeAtPosition(int data, int position) {
 
        Node new_node = new Node(data);
         Node current_node = head;
@@ -78,24 +78,28 @@ public class LinkedList {
 
     }
 
-    static Node deleteNode(Node head, int position) {
-        //position of 0 = head, position of 1 is 1 away from head
-        // handle empty list
-        //at least 0 and less thant the length of list
-            int index = 0;
-            Node toBeDeleted = head;
-
-        for (int i = 0; head != null && i < position-1; i++) {
-            toBeDeleted= toBeDeleted.next;
-        }
-
-        if(toBeDeleted == null || toBeDeleted.next == null){
+    static void deleteNode(int position) {
+        if (head == null)
             return;
+
+
+        Node delete = head;
+        if (position == 0) {
+            delete = delete.next;
+
+        }
+        if (position > 0) {
+            delete = delete.next;
+        }
+
+        for (int i = 0; i < position - 1; i++) {
+            delete = delete.next;
         }
 
 
-                 return head;
-        }
+        delete.next = delete.next.next;
+
+    }
 
 
     //helper function to print given list
@@ -107,6 +111,7 @@ public class LinkedList {
         }
         System.out.println("null");
     }
+
     public static void main(String[] args) {
         LinkedList llist = new LinkedList();
         System.out.println("Original list: ");
@@ -114,12 +119,17 @@ public class LinkedList {
         insertNodeAtHead(1);
         insertNodeAtTail(2);
         insertNodeAtHead(3);
-        deleteNode(head, 1);
+
 
 
         System.out.println("New list with insertions: ");
-        insertNodeAtPosition(4, 3);
+        insertNodeAtPosition(4,2);
+        insertNodeAtPosition(5,1);
+        insertNodeAtPosition(6,5);
 
+        deleteNode( 0);
+        deleteNode( 1);
+        deleteNode( 2);
         PrintList(head);
     }
 }
