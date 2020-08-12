@@ -101,6 +101,21 @@ public class LinkedList {
 
     }
 
+    static void reversePrint(Node head) {
+        Node prev = head;
+        Node current = head.next;
+
+        while(current != null){
+             Node next = current.next;
+             current.next = prev;
+
+             prev = current;
+             current = next;
+
+        }
+
+    }
+
 
     //helper function to print given list
     static void PrintList(Node head) {
@@ -128,8 +143,8 @@ public class LinkedList {
         insertNodeAtPosition(6,5);
 
         deleteNode( 0);
-        deleteNode( 1);
-        deleteNode( 2);
+
+        reversePrint(head);
         PrintList(head);
     }
 }
