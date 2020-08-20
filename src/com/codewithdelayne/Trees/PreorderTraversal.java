@@ -59,8 +59,6 @@ public class PreorderTraversal {
 
 
 
-}
-
 
 //While traversing a tree, you need to visit three elements, root node, left subtree, and right subtree. The order in
 // which you visit these three nodes, determine the type of algorithms.
