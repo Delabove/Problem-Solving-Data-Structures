@@ -1,4 +1,4 @@
-package com.codewithdelayne;
+package com.codewithdelayne.LinkedList;
 
 public class CycleDetection {
 

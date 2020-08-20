@@ -1,7 +1,4 @@
-package com.codewithdelayne.Trees;
-
-import javax.swing.tree.TreeNode;
-import java.util.Stack;
+package com.codewithdelayne.BinaryTrees;
 
 public class PostorderTraversal {
 

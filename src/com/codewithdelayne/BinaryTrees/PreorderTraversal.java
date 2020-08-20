@@ -1,4 +1,4 @@
-package com.codewithdelayne.Trees;
+package com.codewithdelayne.BinaryTrees;
 
 import java.util.Scanner;
 
